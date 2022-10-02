@@ -1,4 +1,6 @@
-<<< OPERATIONS >>>
+	-----------------
+	|   OPERATIONS  |
+	-----------------
 git init
 git add *
 git add <file>
@@ -27,7 +29,16 @@ git mv <oldFile> <newFile>
 	actually does mv, git rm, git add
 
 
-<<< VIEWS >>>
+	-----------------
+	|   BRANCHING   |
+	-----------------
+git branch <branch>
+git checkout <branch>
+
+
+	-----------------
+	|     VIEWS     |
+	-----------------
 git diff
 	between $PWD and staged
 git diff --staged
@@ -41,3 +52,18 @@ git log --stat -1
 	see log of commits, limited to one, including diffs || stats
 git log --pretty=oneline
 	one commit per line :)
+git log --oneline --decorate --graph --all
+	wow it's a graph!
+
+
+	-----------------
+	|    REMOTES    |
+	-----------------
+git remote -v
+	see remotes (-v with URLs)
+
+git fetch origin
+git pull
+	downloads current branch and tries to merge the changes into local (rebase)
+git remote show origin
+	details about all branches local and remote
