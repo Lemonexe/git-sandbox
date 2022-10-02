@@ -1,0 +1,6 @@
+git init
+git add -h ??????
+git add file.ext
+git commit -m 'this is initial commit'
+git status
+git restore --staged cesta2.html
