@@ -34,6 +34,10 @@ git mv <oldFile> <newFile>
 	-----------------
 git branch <branch>
 git checkout <branch>
+git checkout -b <branch>
+	does branch + checkout
+git branch -d <branch>
+	delete branch
 
 
 	-----------------
