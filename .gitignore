@@ -1,0 +1,12 @@
+# ignore dir and everything in it
+_dev/
+
+# glob all env files
+*.env
+
+# negation - but do track example.env
+!example.env
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+
