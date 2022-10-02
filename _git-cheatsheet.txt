@@ -12,3 +12,13 @@ git diff --staged
 	between staged and HEAD
 git commit -a -m 'small changes'
 	adds all tracked files and then commits
+
+
+rm file.txt
+git rm file.txt
+	if I want to del a staged file, this will del file from $PWD and staged
+git rm file.txt -f
+	does it in one step
+
+git mv oldFile newFile
+	actually does mv, git rm, git add
