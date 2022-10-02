@@ -22,3 +22,13 @@ git rm file.txt -f
 
 git mv oldFile newFile
 	actually does mv, git rm, git add
+
+
+git log -p -1
+git log --stat -1
+	see log of commits, limited to one, including diffs || stats
+git log --pretty=oneline
+	one commit per line :)
+
+
+git commit --amend
