@@ -32,16 +32,25 @@ git mv <oldFile> <newFile>
 	-----------------
 	|   BRANCHING   |
 	-----------------
+git branch
+	show branches
 git branch <branch>
+	create
 git checkout <branch>
 git checkout -b <branch>
-	does branch + checkout
+	does create + checkout
 git branch -d <branch>
 	delete branch
 git merge <branch>
 	merge <branch> INTO the current one
 git merge --abort
-
+git branch --move <oldname> <newname>
+	rename branch
+git push --set-upstream origin <newname>
+git push origin --delete <oldname>
+git push origin <branch>
+git checkout --track origin/<branch>
+	create a local, editable branch from a fetched tracking branch
 
 
 	-----------------
