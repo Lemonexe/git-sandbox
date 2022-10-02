@@ -38,6 +38,10 @@ git checkout -b <branch>
 	does branch + checkout
 git branch -d <branch>
 	delete branch
+git merge <branch>
+	merge <branch> INTO the current one
+git merge --abort
+
 
 
 	-----------------
