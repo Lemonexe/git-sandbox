@@ -10,3 +10,5 @@ git diff
 	between $PWD and staged
 git diff --staged
 	between staged and HEAD
+git commit -a -m 'small changes'
+	adds all tracked files and then commits
