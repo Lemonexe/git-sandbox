@@ -19,7 +19,9 @@ git restore <file>
 	both of them drop changes
 
 git commit --amend
+git commit --amend --no-edit
 
+git checkout 9b1573d
 
 rm <file>
 git rm <file>
@@ -29,6 +31,13 @@ git rm <file> -f
 
 git mv <oldFile> <newFile>
 	actually does mv, git rm, git add
+
+git add -i
+	interactive add!
+
+git rebase -i HEAD~3
+	interactive rebase :)
+git rebase --abort
 
 
 	-----------------
@@ -69,7 +78,11 @@ git diff
 	between $PWD and staged
 git diff --staged
 	between staged and HEAD
-
+git diff 9b1573d
+git diff master
+	diffs between current state and a selected commit, or branch
+git diff master...<current>
+	diffs betwen branch <current> and the last common ancestor with master
 
 git log -p -1
 git log --stat -1
@@ -78,6 +91,12 @@ git log --pretty=oneline
 	one commit per line :)
 git log --oneline --decorate --graph --all
 	wow it's a graph!
+
+git show <branch>
+git show 9b1573d
+	like log -1
+git show HEAD~3
+	show the grandgrandparent
 
 
 	-----------------
