@@ -7,6 +7,7 @@ git add <file>
 git commit -m 'this is initial commit'
 git commit -a -m 'small changes'
 	adds all tracked files and then commits
+git commit --amend --no-edit
 git status
 git status -s
 
@@ -28,12 +29,20 @@ git rm <file>
 	if I want to del a staged file, this will del file from $PWD and staged
 git rm <file> -f
 	does it in one step
-
 git mv <oldFile> <newFile>
 	actually does mv, git rm, git add
 
 git add -i
 	interactive add!
+git stash -u
+	add tracked and staged to stash, -u means add also untracked
+git stash list
+git stash apply stash@{n}
+	apply stash[n], or just 'git stash apply' to apply stash[0]
+git stash show -u -p stash@{n}
+	show stash[n], -p to show diffs instead of just files
+git stash drop stash@{n}
+	delete stash[n]
 
 git rebase -i HEAD~3
 	interactive rebase :)
@@ -50,6 +59,7 @@ git branch <branch>
 git checkout <branch>
 git checkout -b <branch>
 	does create + checkout
+git checkout 9b1573d
 git branch -d <branch>
 	delete branch
 git merge <branch>
