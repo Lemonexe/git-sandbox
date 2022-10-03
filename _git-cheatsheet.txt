@@ -5,6 +5,8 @@ git init
 git add *
 git add <file>
 git commit -m 'this is initial commit'
+git commit -a -m 'small changes'
+	adds all tracked files and then commits
 git status
 git status -s
 
@@ -51,6 +53,13 @@ git push origin --delete <oldname>
 git push origin <branch>
 git checkout --track origin/<branch>
 	create a local, editable branch from a fetched tracking branch
+git rebase master
+	rebase current onto master
+	→ then I can checkout master and merge (simple fast-forward) the rebased branch
+git rebase --onto master server client
+	when "client" is an offshoot from "server"
+	rebase only those commits from client that diverged from server, and rebase onto master
+git merge --squash <sidebranch>
 
 
 	-----------------
@@ -60,8 +69,6 @@ git diff
 	between $PWD and staged
 git diff --staged
 	between staged and HEAD
-git commit -a -m 'small changes'
-	adds all tracked files and then commits
 
 
 git log -p -1
