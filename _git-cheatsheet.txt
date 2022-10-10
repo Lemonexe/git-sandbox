@@ -13,7 +13,7 @@ git status -s
 
 git restore --staged <file>
 git reset HEAD <file>
-	both of them unstage a file
+	both of them unstage a file, does not move branch pointer
 
 git checkout -- <file>
 git restore <file>
@@ -23,6 +23,7 @@ git commit --amend
 git commit --amend --no-edit
 
 git checkout 9b1573d
+	moves head itself, not branch pointer that HEAD points to
 
 rm <file>
 git rm <file>
@@ -47,6 +48,11 @@ git stash drop stash@{n}
 git rebase -i HEAD~3
 	interactive rebase :)
 git rebase --abort
+
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD~1
+	move branch pointer HEAD; unstage; reset $PWD
 
 
 	-----------------
@@ -107,6 +113,8 @@ git show 9b1573d
 	like log -1
 git show HEAD~3
 	show the grandgrandparent
+
+git blame <file>
 
 
 	-----------------
