@@ -2,14 +2,17 @@
 	|   OPERATIONS  |
 	-----------------
 git init
+
 git add *
 git add <file>
+git add -i
+	interactive add!
+
 git commit -m 'this is initial commit'
 git commit -a -m 'small changes'
 	adds all tracked files and then commits
-git commit --amend --no-edit
-git status
-git status -s
+git commit --amend -m 'new message'
+git commit -a --amend --no-edit
 
 git restore --staged <file>
 git reset HEAD <file>
@@ -19,22 +22,14 @@ git checkout -- <file>
 git restore <file>
 	both of them drop changes
 
-git commit --amend
-git commit --amend --no-edit
-
-git checkout 9b1573d
-	moves head itself, not branch pointer that HEAD points to
-
 rm <file>
 git rm <file>
 	if I want to del a staged file, this will del file from $PWD and staged
 git rm <file> -f
-	does it in one step
+	does both previous cmds in one step
 git mv <oldFile> <newFile>
 	actually does mv, git rm, git add
 
-git add -i
-	interactive add!
 git stash -u
 	add tracked and staged to stash, -u means add also untracked
 git stash list
@@ -44,6 +39,40 @@ git stash show -u -p stash@{n}
 	show stash[n], -p to show diffs instead of just files
 git stash drop stash@{n}
 	delete stash[n]
+
+
+	-----------------
+	|   BRANCHING   |
+	-----------------
+git branch
+	show branches
+git branch <branch>
+	create
+git branch -d <branch>
+	delete branch
+git branch --move <oldname> <newname>
+	rename branch
+
+git checkout <branch>
+git checkout -b <branch>
+	does both of previous cmds (create and checkout)
+git checkout 9b1573d
+	moves HEAD itself to a different commit, but not branch pointer that HEAD used to point to
+git checkout --track origin/<branch>
+	create a local, editable branch from a fetched tracking branch
+
+git merge <branch>
+	merge <branch> INTO the current one
+git merge --abort
+git merge --squash <sidebranch>
+git merge --abort
+
+git rebase master
+	rebase current onto master
+	→ then I can checkout master and merge (simple fast-forward) the rebased branch
+git rebase --onto master server client
+	when "client" is an offshoot from "server"
+	rebase only those commits from client that diverged from server, and rebase onto master
 
 git rebase -i HEAD~3
 	interactive rebase :)
@@ -56,44 +85,15 @@ git reset --hard HEAD~1
 
 
 	-----------------
-	|   BRANCHING   |
-	-----------------
-git branch
-	show branches
-git branch <branch>
-	create
-git checkout <branch>
-git checkout -b <branch>
-	does create + checkout
-git checkout 9b1573d
-git branch -d <branch>
-	delete branch
-git merge <branch>
-	merge <branch> INTO the current one
-git merge --abort
-git branch --move <oldname> <newname>
-	rename branch
-git push --set-upstream origin <newname>
-git push origin --delete <oldname>
-git push origin <branch>
-git checkout --track origin/<branch>
-	create a local, editable branch from a fetched tracking branch
-git rebase master
-	rebase current onto master
-	→ then I can checkout master and merge (simple fast-forward) the rebased branch
-git rebase --onto master server client
-	when "client" is an offshoot from "server"
-	rebase only those commits from client that diverged from server, and rebase onto master
-git merge --squash <sidebranch>
-
-
-	-----------------
 	|     VIEWS     |
 	-----------------
+git status
+git status -s
+
 git diff
-	between $PWD and staged
+	between $PWD and staged (unstaged changes)
 git diff --staged
-	between staged and HEAD
+	between staged and HEAD (staged changes)
 git diff 9b1573d
 git diff master
 	diffs between current state and a selected commit, or branch
@@ -105,7 +105,7 @@ git log --stat -1
 	see log of commits, limited to one, including diffs || stats
 git log --pretty=oneline
 	one commit per line :)
-git log --oneline --decorate --graph --all
+git log --oneline --graph
 	wow it's a graph!
 
 git show <branch>
@@ -115,6 +115,8 @@ git show HEAD~3
 	show the grandgrandparent
 
 git blame <file>
+git grep -n --extended-regexp "regex" "file match pattern"
+	serches all present and historic files for regex in files e.g. *.tsx
 
 
 	-----------------
@@ -122,9 +124,17 @@ git blame <file>
 	-----------------
 git remote -v
 	see remotes (-v with URLs)
-
-git fetch origin
-git pull
-	downloads current branch and tries to merge the changes into local (rebase)
+git remote add origin git@github.com:user/repository.git
 git remote show origin
 	details about all branches local and remote
+
+git fetch origin
+	just fetches into the local origin/branches
+git pull origin master
+	downloads current branch and tries to merge the changes into local (rebase)
+
+git push origin <branch>
+git push --set-upstream origin <newname>
+	rename branch at origin
+git push origin --delete <oldname>
+	delete branch at origin
