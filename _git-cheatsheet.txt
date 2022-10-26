@@ -73,6 +73,8 @@ git rebase master
 git rebase --onto master server client
 	when "client" is an offshoot from "server"
 	rebase only those commits from client that diverged from server, and rebase onto master
+git rebase --onto master HEAD~<number>
+	rebase current branch onto master by replaying last <number> commits
 
 git rebase -i HEAD~3
 	interactive rebase :)
