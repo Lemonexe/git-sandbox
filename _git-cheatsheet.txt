@@ -47,7 +47,7 @@ git stash drop stash@{n}
 git branch
 	show branches
 git branch <branch>
-	create
+	create new branch
 git branch -d <branch>
 	delete branch
 git branch --move <oldname> <newname>
@@ -55,7 +55,7 @@ git branch --move <oldname> <newname>
 
 git checkout <branch>
 git checkout -b <branch>
-	does both of previous cmds (create and checkout)
+	create new branch & check it out
 git checkout 9b1573d
 	moves HEAD itself to a different commit, but not branch pointer that HEAD used to point to
 git checkout --track origin/<branch>
@@ -102,13 +102,16 @@ git diff master
 git diff master...<current>
 	diffs betwen branch <current> and the last common ancestor with master
 
-git log -p -1
+git log -3
+	see last 3 commits
 git log --stat -1
-	see log of commits, limited to one, including diffs || stats
-git log --pretty=oneline
+	see stats of the last commit
+git log -p -1
+	see full diff of the last commit
+git log --oneline
 	one commit per line :)
 git log --oneline --graph
-	wow it's a graph!
+	wow it's a graph of branches!
 
 git show <branch>
 git show 9b1573d
