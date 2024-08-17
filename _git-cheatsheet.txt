@@ -65,7 +65,6 @@ git merge <branch>
 	merge <branch> INTO the current one
 git merge --abort
 git merge --squash <sidebranch>
-git merge --abort
 
 git rebase master
 	rebase current onto master
@@ -101,6 +100,8 @@ git diff master
 	diffs between current state and a selected commit, or branch
 git diff master...<current>
 	diffs betwen branch <current> and the last common ancestor with master
+git diff --name-only HEAD~1
+	only filenames. In bash, you can count files: | wc -l
 
 git log -3
 	see last 3 commits
@@ -137,9 +138,13 @@ git fetch origin
 	just fetches into the local origin/branches
 git pull origin master
 	downloads current branch and tries to merge the changes into local (rebase)
+git fetch origin master && git update-ref refs/heads/master refs/remotes/origin/master
+	updates master without having to check it out
 
 git push origin <branch>
 git push --set-upstream origin <newname>
 	rename branch at origin
 git push origin --delete <oldname>
 	delete branch at origin
+git branch --unset-upstream
+	disconnect remote tracking
