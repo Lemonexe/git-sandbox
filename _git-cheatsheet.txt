@@ -30,16 +30,6 @@ git rm <file> -f
 git mv <oldFile> <newFile>
 	actually does mv, git rm, git add
 
-git stash -u
-	add tracked and staged to stash, -u means add also untracked
-git stash list
-git stash apply stash@{n}
-	apply stash[n], or just 'git stash apply' to apply stash[0]
-git stash show -u -p stash@{n}
-	show stash[n], -p to show diffs instead of just files
-git stash drop stash@{n}
-	delete stash[n]
-
 
 	-----------------
 	|   BRANCHING   |
@@ -69,20 +59,23 @@ git merge --squash <sidebranch>
 git rebase master
 	rebase current onto master
 	→ then I can checkout master and merge (simple fast-forward) the rebased branch
-git rebase --onto master server client
-	when "client" is an offshoot from "server"
-	rebase only those commits from client that diverged from server, and rebase onto master
-git rebase --onto master HEAD~<number>
-	rebase current branch onto master by replaying last <number> commits
+
+# git rebase --onto master HEAD~2
+	rebase current branch onto master by replaying all commits starting with first after pointer DESTRUCTIVE!
+# git rebase --onto master BRANCH1 BRANCH2
+	when BRANCH2 is an offshoot from BRANCH1, rebase onto master BRANCH2 commits diverged from BRANCH1
+	(lose all BRANCH1 commits) DESTRUCTIVE!
 
 git rebase -i HEAD~3
-	interactive rebase :)
+	interactive rebase, starting from first commit after pointer :)
 git rebase --abort
 
 git reset --soft HEAD~1
+	move branch pointer HEAD to selected pointer
 git reset --mixed HEAD~1
-git reset --hard HEAD~1
-	move branch pointer HEAD; unstage; reset $PWD
+	and unstage files
+# git reset --hard HEAD~1
+	and reset $PWD = drop changes DESTRUCTIVE!
 
 
 	-----------------
@@ -97,11 +90,14 @@ git diff --staged
 	between staged and HEAD (staged changes)
 git diff 9b1573d
 git diff master
-	diffs between current state and a selected commit, or branch
-git diff master...<current>
-	diffs betwen branch <current> and the last common ancestor with master
+	diffs between current state and a selected pointer
 git diff --name-only HEAD~1
 	only filenames. In bash, you can count files: | wc -l
+
+git diff master...BRANCH
+	diffs betwen branch BRANCH and the last common ancestor with master
+git diff master..BRANCH
+	only commits unique to BRANCH (all diffs not in master)
 
 git log -3
 	see last 3 commits
@@ -148,3 +144,20 @@ git push origin --delete <oldname>
 	delete branch at origin
 git branch --unset-upstream
 	disconnect remote tracking
+
+git fetch origin pull/9876/head:NEW_BRANCH_NAME && git checkout NEW_BRANCH_NAME
+	github only: checkout PR 9876 with deleted branch as a local NEW_BRANCH_NAME
+
+
+	-----------------
+	|    STASHES    |
+	-----------------
+git stash -u
+	add tracked and staged to stash, -u means add also untracked
+git stash list
+git stash apply stash@{n}
+	apply stash[n], or just 'git stash apply' to apply stash[0]
+git stash show -u -p stash@{n}
+	show stash[n], -p to show diffs instead of just files
+git stash drop stash@{n}
+	delete stash[n]
