@@ -149,6 +149,15 @@ git fetch origin pull/9876/head:NEW_BRANCH_NAME && git checkout NEW_BRANCH_NAME
 	github only: checkout PR 9876 with deleted branch as a local NEW_BRANCH_NAME
 
 
+	--------------
+	|    TAGS    |
+	--------------
+git tag
+	shows all tags
+git rev-parse TAGNAME
+	returns commit hash
+
+
 	-----------------
 	|    STASHES    |
 	-----------------
