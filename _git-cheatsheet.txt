@@ -77,6 +77,11 @@ git reset --mixed HEAD~1
 # git reset --hard HEAD~1
 	and reset $PWD = drop changes DESTRUCTIVE!
 
+git cherry-pick COMMIT_HASH
+	pick commit from anywhere (from another branch or orphaned one), and append it on this branch
+
+git merge-base COMMIT_HASH1 COMMIT_HASH2
+	get commit hash of common ancestor of COMMIT1 and COMMIT2
 
 	-----------------
 	|     VIEWS     |
@@ -154,8 +159,8 @@ git fetch origin pull/9876/head:NEW_BRANCH_NAME && git checkout NEW_BRANCH_NAME
 	--------------
 git tag
 	shows all tags
-git rev-parse TAGNAME
-	returns commit hash
+git rev-parse POINTER
+		returns commit hash of any pointer, such as TAGNAME or HEAD~1 or so
 
 
 	-----------------
