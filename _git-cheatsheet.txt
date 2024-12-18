@@ -4,7 +4,7 @@
 git init
 
 git add *
-git add <file>
+git add <file_path>
 git add -i
 	interactive add!
 
@@ -14,20 +14,20 @@ git commit -a -m 'small changes'
 git commit --amend -m 'new message'
 git commit -a --amend --no-edit
 
-git restore --staged <file>
-git reset HEAD <file>
+git restore --staged <file_path>
+git reset HEAD <file_path>
 	both of them unstage a file, does not move branch pointer
 
-git checkout -- <file>
-git restore <file>
+git checkout -- <file_path>
+git restore <file_path>
 	both of them drop changes
 
-rm <file>
-git rm <file>
+rm <file_path>
+git rm <file_path>
 	if I want to del a staged file, this will del file from $PWD and staged
-git rm <file> -f
+git rm <file_path> -f
 	does both previous cmds in one step
-git mv <oldFile> <newFile>
+git mv <old_file_path> <new_file_path>
 	actually does mv, git rm, git add
 
 
@@ -36,23 +36,23 @@ git mv <oldFile> <newFile>
 	-----------------
 git branch
 	show branches
-git branch <branch>
+git branch <branch_name>
 	create new branch
-git branch -d <branch>
+git branch -d <branch_name>
 	delete branch
-git branch --move <oldname> <newname>
+git branch --move <old_branch_name> <new_branch_name>
 	rename branch
 
-git checkout <branch>
-git checkout -b <branch>
+git checkout <branch_name>
+git checkout -b <branch_name>
 	create new branch & check it out
 git checkout 9b1573d
 	moves HEAD itself to a different commit, but not branch pointer that HEAD used to point to
-git checkout --track origin/<branch>
+git checkout --track origin/<branch_name>
 	create a local, editable branch from a fetched tracking branch
 
-git merge <branch>
-	merge <branch> INTO the current one
+git merge <branch_name>
+	merge <branch_name> into the current one
 git merge --abort
 git merge --squash <sidebranch>
 
@@ -62,9 +62,9 @@ git rebase master
 
 # git rebase --onto master HEAD~2
 	rebase current branch onto master by replaying all commits starting with first after pointer DESTRUCTIVE!
-# git rebase --onto master BRANCH1 BRANCH2
-	when BRANCH2 is an offshoot from BRANCH1, rebase onto master BRANCH2 commits diverged from BRANCH1
-	(lose all BRANCH1 commits) DESTRUCTIVE!
+# git rebase --onto <branch1> <branch2>
+	when <branch2> is an offshoot from <branch1>, rebase onto master <branch2> commits diverged from <branch1>
+	(lose all <branch1> commits) DESTRUCTIVE!
 
 git rebase -i HEAD~3
 	interactive rebase, starting from first commit after pointer :)
@@ -77,11 +77,11 @@ git reset --mixed HEAD~1
 # git reset --hard HEAD~1
 	and reset $PWD = drop changes DESTRUCTIVE!
 
-git cherry-pick COMMIT_HASH
+git cherry-pick <commit_hash>
 	pick commit from anywhere (from another branch or orphaned one), and append it on this branch
 
-git merge-base COMMIT_HASH1 COMMIT_HASH2
-	get commit hash of common ancestor of COMMIT1 and COMMIT2
+git merge-base <pointer1> <pointer2>
+	get commit hash of common ancestor of the two pointers
 
 	-----------------
 	|     VIEWS     |
@@ -99,10 +99,10 @@ git diff master
 git diff --name-only HEAD~1
 	only filenames. In bash, you can count files: | wc -l
 
-git diff master...BRANCH
-	diffs betwen branch BRANCH and the last common ancestor with master
-git diff master..BRANCH
-	only commits unique to BRANCH (all diffs not in master)
+git diff master...<branch_name>
+	diffs betwen branch <branch_name> and the last common ancestor with master
+git diff master..<branch_name>
+	only commits unique to <branch_name> (all diffs not in master)
 
 git log -3
 	see last 3 commits
@@ -115,13 +115,13 @@ git log --oneline
 git log --oneline --graph
 	wow it's a graph of branches!
 
-git show <branch>
+git show <branch_name>
 git show 9b1573d
 	like log -1
 git show HEAD~3
 	show the grandgrandparent
 
-git blame <file>
+git blame <file_path>
 git grep -n --extended-regexp "regex" "file match pattern"
 	serches all present and historic files for regex in files e.g. *.tsx
 
@@ -142,7 +142,7 @@ git pull origin master
 git fetch origin master && git update-ref refs/heads/master refs/remotes/origin/master
 	updates master without having to check it out
 
-git push origin <branch>
+git push origin <branch_name>
 git push --set-upstream origin <newname>
 	rename branch at origin
 git push origin --delete <oldname>
@@ -150,8 +150,8 @@ git push origin --delete <oldname>
 git branch --unset-upstream
 	disconnect remote tracking
 
-git fetch origin pull/9876/head:NEW_BRANCH_NAME && git checkout NEW_BRANCH_NAME
-	github only: checkout PR 9876 with deleted branch as a local NEW_BRANCH_NAME
+git fetch origin pull/9876/head:<new_branch_name> && git checkout <new_branch_name>
+	github only: checkout PR 9876 with deleted branch as a local <new_branch_name>
 
 
 	--------------
@@ -159,8 +159,8 @@ git fetch origin pull/9876/head:NEW_BRANCH_NAME && git checkout NEW_BRANCH_NAME
 	--------------
 git tag
 	shows all tags
-git rev-parse POINTER
-		returns commit hash of any pointer, such as TAGNAME or HEAD~1 or so
+git rev-parse <pointer>
+		returns commit hash of any pointer, such as a tag name or HEAD~1 or so
 
 
 	-----------------
