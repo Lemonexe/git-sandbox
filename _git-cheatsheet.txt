@@ -88,6 +88,8 @@ git merge-base <pointer1> <pointer2>
 	-----------------
 git status
 git status -s
+git status -sb
+	name of remote branch if exists
 
 git diff
 	between $PWD and staged (unstaged changes)
