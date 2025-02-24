@@ -13,6 +13,11 @@ git commit -a -m 'small changes'
 	adds all tracked files and then commits
 git commit --amend -m 'new message'
 git commit -a --amend --no-edit
+git commit -m "[skip ci]" --allow-empty'
+git commit --fixup=HEAD
+git commit --fixup=<pointer>
+
+
 
 git restore --staged <file_path>
 git reset HEAD <file_path>
@@ -61,12 +66,12 @@ git rebase master
 	→ then I can checkout master and merge (simple fast-forward) the rebased branch
 
 # git rebase --onto master HEAD~2
-	rebase current branch onto master by replaying all commits starting with first after pointer DESTRUCTIVE!
+	DESTRUCTIVE!! rebase current branch onto master by replaying all commits starting with first after pointer
 # git rebase --onto <branch1> <branch2>
 	when <branch2> is an offshoot from <branch1>, rebase onto master <branch2> commits diverged from <branch1>
-	(lose all <branch1> commits) DESTRUCTIVE!
+	DESTRUCTIVE!! (lose all <branch1> commits)
 
-git rebase -i HEAD~3
+git rebase -i --autosquash HEAD~3
 	interactive rebase, starting from first commit after pointer :)
 git rebase --abort
 
@@ -139,6 +144,7 @@ git remote show origin
 
 git fetch origin
 	just fetches into the local origin/branches
+git fetch origin <branch_name>
 git pull origin master
 	downloads current branch and tries to merge the changes into local (rebase)
 git fetch origin master && git update-ref refs/heads/master refs/remotes/origin/master
