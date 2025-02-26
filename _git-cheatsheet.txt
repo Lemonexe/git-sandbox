@@ -17,8 +17,6 @@ git commit -m "[skip ci]" --allow-empty'
 git commit --fixup=HEAD
 git commit --fixup=<pointer>
 
-
-
 git restore --staged <file_path>
 git reset HEAD <file_path>
 	both of them unstage a file, does not move branch pointer
@@ -51,7 +49,7 @@ git branch --move <old_branch_name> <new_branch_name>
 git checkout <branch_name>
 git checkout -b <branch_name>
 	create new branch & check it out
-git checkout 9b1573d
+git checkout <pointer>
 	moves HEAD itself to a different commit, but not branch pointer that HEAD used to point to
 git checkout --track origin/<branch_name>
 	create a local, editable branch from a fetched tracking branch
@@ -88,6 +86,7 @@ git cherry-pick <commit_hash>
 git merge-base <pointer1> <pointer2>
 	get commit hash of common ancestor of the two pointers
 
+
 	-----------------
 	|     VIEWS     |
 	-----------------
@@ -100,7 +99,7 @@ git diff
 	between $PWD and staged (unstaged changes)
 git diff --staged
 	between staged and HEAD (staged changes)
-git diff 9b1573d
+git diff <pointer>
 git diff master
 	diffs between current state and a selected pointer
 git diff --name-only HEAD~1
@@ -123,10 +122,8 @@ git log --oneline --graph
 	wow it's a graph of branches!
 
 git show <branch_name>
-git show 9b1573d
-	like log -1
-git show HEAD~3
-	show the grandgrandparent
+git show <pointer>
+	HEAD~1 is like log -1
 
 git blame <file_path>
 git grep -n --extended-regexp "regex" "file match pattern"
@@ -147,7 +144,7 @@ git fetch origin
 git fetch origin <branch_name>
 git pull origin master
 	downloads current branch and tries to merge the changes into local (rebase)
-git fetch origin master && git update-ref refs/heads/master refs/remotes/origin/master
+git fetch origin master && git branch -f master origin/master
 	updates master without having to check it out
 
 git push origin <branch_name>
