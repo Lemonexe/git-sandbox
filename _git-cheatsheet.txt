@@ -120,6 +120,7 @@ git log --oneline
 	one commit per line :)
 git log --oneline --graph
 	wow it's a graph of branches!
+git log --show-signature -1
 
 git show <branch_name>
 git show <pointer>
@@ -166,17 +167,3 @@ git tag
 	shows all tags
 git rev-parse <pointer>
 		returns commit hash of any pointer, such as a tag name or HEAD~1 or so
-
-
-	-----------------
-	|    STASHES    |
-	-----------------
-git stash -u
-	add tracked and staged to stash, -u means add also untracked
-git stash list
-git stash apply stash@{n}
-	apply stash[n], or just 'git stash apply' to apply stash[0]
-git stash show -u -p stash@{n}
-	show stash[n], -p to show diffs instead of just files
-git stash drop stash@{n}
-	delete stash[n]
