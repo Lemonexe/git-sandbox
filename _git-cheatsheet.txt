@@ -149,6 +149,7 @@ git fetch origin master && git branch -f master origin/master
 	updates master without having to check it out
 
 git push origin <branch_name>
+git push origin <local_branch_name>:<different_branch_name_at_remote>
 git push --set-upstream origin <newname>
 	rename branch at origin
 git push origin --delete <oldname>
