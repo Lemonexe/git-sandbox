@@ -24,6 +24,8 @@ git reset HEAD <file_path>
 git checkout -- <file_path>
 git restore <file_path>
 	both of them drop changes
+git clean -fd
+	delete all untracked files & folders 
 
 rm <file_path>
 git rm <file_path>
