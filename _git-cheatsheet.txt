@@ -129,8 +129,10 @@ git show <pointer>
 	HEAD~1 is like log -1
 
 git blame <file_path>
-git grep -n --extended-regexp "regex" "file match pattern"
-	serches all present and historic files for regex in files e.g. *.tsx
+git log --oneline pointer1..pointer2 -G'searched text phrase in diffs'
+	finds commits whose diffs included search phrase. Not when file was renamed/moved!
+git grep -n "searched text phrase in working tree" pointer
+	serches the worktree at pointer for search phrase
 
 
 	-----------------
