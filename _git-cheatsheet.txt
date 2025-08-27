@@ -172,3 +172,9 @@ git tag
 	shows all tags
 git rev-parse <pointer>
 		returns commit hash of any pointer, such as a tag name or HEAD~1 or so
+
+	--------------------
+	|    SUBMODULES    |
+	--------------------
+git submodule status
+git submodule update --init --recursive
