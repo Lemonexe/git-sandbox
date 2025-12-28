@@ -178,3 +178,9 @@ git rev-parse <pointer>
 	--------------------
 git submodule status
 git submodule update --init --recursive
+
+	-----------------
+	|    OFFLINE    |
+	-----------------
+git format-patch -1 HEAD # last commit
+git apply last_commit.patch
