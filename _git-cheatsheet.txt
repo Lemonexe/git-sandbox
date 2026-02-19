@@ -131,6 +131,8 @@ git show <pointer>
 git blame <file_path>
 git log --oneline pointer1..pointer2 -G'searched text phrase in diffs'
 	finds commits whose diffs included search phrase. Not when file was renamed/moved!
+git log --all --diff-filter=RD --summary -- MyFileName.txt
+	when was filename renamed (R) or deleted (D) 
 git grep -n "searched text phrase in working tree" pointer
 	serches the worktree at pointer for search phrase
 
