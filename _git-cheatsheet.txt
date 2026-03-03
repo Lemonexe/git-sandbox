@@ -135,7 +135,8 @@ git log --all --diff-filter=RD --summary -- MyFileName.txt
 	when was filename renamed (R) or deleted (D) 
 git grep -n "searched text phrase in working tree" pointer
 	serches the worktree at pointer for search phrase
-
+git log release/26.2 --grep="fix for foobar"
+	searches a branch for commit name
 
 	-----------------
 	|    REMOTES    |
