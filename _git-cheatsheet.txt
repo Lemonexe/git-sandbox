@@ -41,6 +41,8 @@ git mv <old_file_path> <new_file_path>
 	-----------------
 git branch
 	show branches
+git branch --show-current
+	print only current branch name (useful for scripts)
 git branch <branch_name>
 	create new branch
 git branch -d <branch_name>
