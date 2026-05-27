@@ -178,11 +178,24 @@ git tag
 git rev-parse <pointer>
 		returns commit hash of any pointer, such as a tag name or HEAD~1 or so
 
+
+	-------------------
+	|    WORKTREES    |
+	-------------------
+git worktree add ../my-repo-2 feature-branch
+	better than cloning my-repo twice
+cd ../my-repo-2 && git checkout different-branch
+	note that worktree and main repo can never share the same branch
+git worktree list
+git worktree prune
+
+
 	--------------------
 	|    SUBMODULES    |
 	--------------------
 git submodule status
 git submodule update --init --recursive
+
 
 	-----------------
 	|    OFFLINE    |
